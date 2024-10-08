@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as BS
 import random
 
 def get_random_image():
-    with open('/app/data/objects.json', "r") as f:
+    with open('../data/objects.json', "r") as f:
         objects = json.loads(f.readline())['objects']
         n = len(objects)
 
