@@ -1,0 +1,16 @@
+{
+    "materials": [
+        {
+            "type": "Книга",
+            "title": "Явление Древнегреческого Искусства",
+            "author": "Е. В. Попова",
+            "url": "https://example.com/book2"
+        },
+        {
+            "type": "Статья",
+            "title": "Древнегреческие скульптуры",
+            "author": "К. А. Сидорова",
+            "url": "https://example.com/article2"
+        }
+    ]
+}

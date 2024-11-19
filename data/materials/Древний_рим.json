@@ -1,0 +1,16 @@
+{
+    "materials": [
+        {
+            "type": "Книга",
+            "title": "Искусство Рима",
+            "author": "М. А. Петров",
+            "url": "https://example.com/book3"
+        },
+        {
+            "type": "Статья",
+            "title": "Художественные традиции Рима",
+            "author": "С. Л. Федоров",
+            "url": "https://example.com/article3"
+        }
+    ]
+}

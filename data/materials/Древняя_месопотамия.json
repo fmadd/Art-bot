@@ -1,0 +1,16 @@
+{
+    "materials": [
+        {
+            "type": "Книга",
+            "title": "Искусство Древней Месопотамии",
+            "author": "А. Н. Смирнов",
+            "url": "https://example.com/book1"
+        },
+        {
+            "type": "Статья",
+            "title": "Архитектура древней Месопотамии",
+            "author": "И. П. Иванов",
+            "url": "https://example.com/article1"
+        }
+    ]
+}

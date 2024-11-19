@@ -1,0 +1,21 @@
+{
+    "materials": [
+        {
+            "type": "книга",
+            "title": "Импрессионисты: движение и стиль",
+            "author": "А. Б. Смит",
+            "url": "https://example.com/book-Impressionists"
+        },
+        {
+            "type": "статья",
+            "title": "Что такое импрессионизм?",
+            "author": "И. И. Иванов",
+            "url": "https://example.com/article-Impressionism"
+        },
+        {
+            "type": "ролик",
+            "title": "Введение в Импрессионизм",
+            "url": "https://example.com/video-Impressionism"
+        }
+    ]
+}
