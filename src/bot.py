@@ -28,10 +28,45 @@ def load_exhibitions(direction):
     return None
 
 
-# Инициализация бота
+
+
+def send_art_info(message, data):
+    description = data['description']
+
+    books_info = "📚 Книги по искусству Древнего Египта:\n"
+    for book in data['books']:
+        books_info += f"• {book['title']}\nАвтор: {book['author']}\nСсылка: {book['url']}\n\n"
+    
+    videos_info = "🎥 Видео и лекции:\n"
+    for video in data['videos']:
+        videos_info += f"• {video['title']} ({video['time']})\nСсылка: {video['url']}\n\n"
+    
+    places_info = "🏛️ Интересные места:\n"
+    for place in data['interesting_places']:
+        places_info += f"• {place['title']}\nОписание: {place['description']}\nАдрес: {place['address']}\nВремя работы: {place['museum schedule']}\nСсылка: {place['url']}\n\n"
+
+    full_message = f"🎨 Полезная информация\n\n{description}\n\n{books_info}\n{videos_info}\n{places_info}"
+    
+    def send_message_in_parts(chat_id, text, max_length=4096):
+        while len(text) > max_length:
+            split_pos = text.rfind('\n', 0, max_length)
+            if split_pos == -1:  
+                split_pos = text.rfind(' ', 0, max_length)
+            if split_pos == -1: 
+                split_pos = max_length
+
+            part = text[:split_pos].strip()
+            bot.send_message(chat_id, part)
+
+            text = text[split_pos:].strip()
+
+        if text:
+            bot.send_message(chat_id, text)
+
+    send_message_in_parts(message.chat.id, full_message)
+
 bot = telebot.TeleBot(API_TOKEN)
 
-# Загрузка данных направлений искусства
 art_directions = load_art_directions()
 user_states = {}
 
@@ -77,9 +112,9 @@ def handle_user_direction(message):
     if state == 'waiting_for_direction_exhibitions':
         exhibitions = load_exhibitions(message.text)
         if exhibitions:
-            exhibitions_list = [f"{exhibition['name']}: {exhibition['description']} (дата: {exhibition['date']})"
+            exhibitions_list = [f"{exhibition['title']}\n\n{exhibition['description']}\n\nАдресс: {exhibition['address']}\n\nДата: {exhibition['date']}\n\nРассписание музея: {exhibition['museum schedule']}\n\nСсылка: {exhibition['url']}\n\n"
                                 for exhibition in exhibitions['exhibitions']]
-            response = f"Выставки по направлению {message.text.capitalize()}:\n" + "\n".join(exhibitions_list)
+            response = f"Выставки по направлению {message.text.capitalize()}:\n\n" + "\n\n".join(exhibitions_list)
         else:
             response = f"Извините, никаких выставок по направлению {message.text.capitalize()} не найдено."
         bot.send_message(user_id, response)
@@ -87,20 +122,14 @@ def handle_user_direction(message):
     elif state == 'waiting_for_direction_materials':
         materials = load_materials(message.text)
         if materials:
-            materials_list = [f"{item['type']}: {item['title']} (Автор: {item.get('author', 'Не указан')}, URL: {item['url']})"
-                              for item in materials['materials']]
-            response = f"Материалы по направлению {message.text.capitalize()}:\n" + "\n".join(materials_list)
+            send_art_info(message, materials)
         else:
             response = f"Извините, никаких материалов по направлению {message.text.capitalize()} не найдено."
-        bot.send_message(user_id, response)
+            bot.send_message(user_id, response)
 
     # Удаляем состояние после обработки
     #user_states.pop(user_id, None)
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
-'''ункционал бота можно разделить на две основные части.
 
-Во-первых, бот сможет по каждому из направлений, выбранных пользователем, давать краткую характеристику, а также при запросе подбирать искусствоведческие материалы, которые помогли бы пользователю углубить свои знания об искусстве этого направления, и рекомендовать музеи, в которых можно ознакомиться с произведениями искусства этого направления.
-
-Во-вторых, бот сможет выдавать список актуальных выставок, проходящих в Москве, и их описания, а также при запросе подбирать искусствоведческие материалы, которые помогли бы пользователю подготовиться к посещению этих выставок.'''
