@@ -1,0 +1,70 @@
+{
+"description": "Искусство Античности (VII в. до н.э. – V в. н.э.) охватывает культуру Древней Греции и Древнего Рима.\nОсновное назначение искусства Античности было религиозным: оно служило для почитания богов и богинь. Кроме того, искусство Античности прославляло правителей и героев, увековечивая их в истории.\nАнтичное искусство стремилось к идеальной красоте, выраженной через симметрию и пропорции. Главным объектом изображения был человек и его тело.",
+"books": [
+        {
+            "title": "Основы истории искусств",
+            "author": "Хорст Вольдемар Янсон",
+            "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+        },
+        {
+            "title": "История Искусства Древности",
+            "author": "Иоганн Иоахим Винкельман",
+            "url": "https://disk.yandex.ru/d/XeU9QAE4Q4c7Qg"
+        },
+	{
+            "title": "Искусство Древней Греции",
+            "author": "Б. Р. Виппер",
+            "url": "https://disk.yandex.ru/i/M1VvPOgzNFuuNw"
+        },
+	{
+            "title": "Искусство Эгейского мира и Древней Греции",
+            "author": "Ю. Д. Колпинский",
+            "url": "https://disk.yandex.ru/i/p6r57bYsY6dbMg"
+        },
+	{
+            "title": "Искусство этрусков и Древнего Рима",
+            "author": "Ю. Д. Колпинский",
+            "url": "https://disk.yandex.ru/d/yEKoltSSfo-AgQ"
+        },
+	{
+            "title": "Римский скульптурный портрет",
+            "author": "Н. Н. Бритова, Н. М. Лосева, Н. А. Сидорова",
+            "url": "https://ancientrome.ru/publik/art/rsp/"
+        }
+    ],
+"videos": [
+	{
+            "title": "Лекция от Школы Дизайна ВШЭ",
+            "time": "1 ч 22 мин",
+            "url": "https://youtu.be/C2jYMlcx1zc?si=NJAVC9n1ELP_XJ3u"
+	},
+	{
+            "title": "Лекции Надежды Юрасовой",
+            "time": "1 ч 22 мин",
+            "url": "https://youtube.com/playlist?list=PLDrNDWhUoSqM-UvSxl0im1_PY7NCzznis&si=NazrtHOVLro-xJuY"
+	},
+	{
+            "title": "Лекция на канале СПбГУПТД о культуре Древней Греции",
+            "time": "22 мин",
+            "url": "https://youtu.be/Fex1p0GGLwQ?si=PZ5CmgD5QttTtESR"
+	},
+	{
+            "title": "Лекция на канале СПбГУПТД о культуре Древнего Рима",
+            "time": "21 мин",
+            "url": "https://youtu.be/lzfWEG-pDdc?si=txvJtOcWJE-Vl3sS"
+	},
+	{
+            "title": "Лекция Алексея Шадрина об искусстве Древней Греции",
+            "time": "1 ч 38 мин",
+            "url": "https://youtu.be/mucSXnbDjN4?si=nmhXHsJto9R6rzxM"
+	},
+	{
+            "title": "Лекции Арсения Дежурова об искусстве Древней Греции",
+            "time": "",
+            "url": "https://youtube.com/playlist?list=PLZxOiJlB-53Jl27JFzUNl3tvLp4alolsm&si=66o2Uz7wEZS6keA_"
+	}
+    ],
+"interesting_places": [
+
+    ]
+}

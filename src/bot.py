@@ -5,7 +5,6 @@ import json
 import os
 
 # Функция для загрузки данных
-
 def format(direction):
     return direction.replace(" ", "_")
 
@@ -27,43 +26,31 @@ def load_exhibitions(direction):
             return json.load(f)
     return None
 
-
-
-
-def send_art_info(message, data):
-    description = data['description']
-
-    books_info = "📚 Книги по искусству Древнего Египта:\n"
-    for book in data['books']:
-        books_info += f"• {book['title']}\nАвтор: {book['author']}\nСсылка: {book['url']}\n\n"
-    
-    videos_info = "🎥 Видео и лекции:\n"
-    for video in data['videos']:
-        videos_info += f"• {video['title']} ({video['time']})\nСсылка: {video['url']}\n\n"
-    
-    places_info = "🏛️ Интересные места:\n"
-    for place in data['interesting_places']:
-        places_info += f"• {place['title']}\nОписание: {place['description']}\nАдрес: {place['address']}\nВремя работы: {place['museum schedule']}\nСсылка: {place['url']}\n\n"
-
-    full_message = f"🎨 Полезная информация\n\n{description}\n\n{books_info}\n{videos_info}\n{places_info}"
-    
-    def send_message_in_parts(chat_id, text, max_length=4096):
-        while len(text) > max_length:
-            split_pos = text.rfind('\n', 0, max_length)
-            if split_pos == -1:  
-                split_pos = text.rfind(' ', 0, max_length)
-            if split_pos == -1: 
-                split_pos = max_length
-
-            part = text[:split_pos].strip()
-            bot.send_message(chat_id, part)
-
-            text = text[split_pos:].strip()
-
-        if text:
-            bot.send_message(chat_id, text)
-
-    send_message_in_parts(message.chat.id, full_message)
+def send_materials(message, data, material_type):
+    content = ''
+    if material_type == "Видео":
+        pcontent = "🎥 Видео и лекции:\n"
+        for video in data.get('videos', []):
+            content += f"• {video['title']} ({video['time']})\nСсылка: {video['url']}\n\n"
+    elif material_type == "Статьи":
+        pcontent = "📰 Статьи:\n"
+        for article in data.get('articles', []):
+            content += f"• {article['title']}\nАвтор: {article['author']}\nСсылка: {article['url']}\n\n"
+    elif material_type == "Книги":
+        pcontent = "📚 Книги:\n"
+        for book in data.get('books', []):
+            content += f"• {book['title']}\nАвтор: {book['author']}\nСсылка: {book['url']}\n\n"
+    elif material_type == "Места":
+        pcontent = "🏛️ Интересные места:\n"
+        if len(data.get('interesting_places', [])) != 0: 
+            for place in data.get('interesting_places', []):
+                content += f"• {place['title']}\nОписание: {place['description']}\nАдрес: {place['address']}\nВремя работы: {place['museum schedule']}\nСсылка: {place['url']}\n\n"
+    print(material_type)
+    if content:
+        content = pcontent + content
+        bot.send_message(message.chat.id, content)
+    else:
+        bot.send_message(message.chat.id, "Извините, ничего не найдено.")
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -81,10 +68,10 @@ def start(message):
 @bot.message_handler(func=lambda message: message.text in ["Выставки", "Материалы"])
 def main_menu(message):
     if message.text == "Выставки":
-        user_states[message.chat.id] = 'waiting_for_direction_exhibitions'
+        user_states[str(message.chat.id)] = 'waiting_for_direction_exhibitions'
         show_directions(message.chat.id, "выставок")
     elif message.text == "Материалы":
-        user_states[message.chat.id] = 'waiting_for_direction_materials'
+        user_states[str(message.chat.id)] = 'waiting_for_direction_materials'
         show_directions(message.chat.id, "материалов")
 
 def show_directions(chat_id, action):
@@ -99,16 +86,15 @@ def show_directions(chat_id, action):
 
 @bot.message_handler(func=lambda message: message.text in art_directions.keys() or message.text == "Назад")
 def handle_user_direction(message):
-    user_id = message.chat.id
+    user_id = str(message.chat.id) 
 
     if message.text == "Назад":
-        start(message)  # Возврат в главное меню
+        start(message)  
         user_states.pop(user_id, None)
         return
     
-    # Проверяем состояние и загружаем соответствующие данные
-    state = user_states.get(user_id)
-    
+    state = user_states[user_id]
+    print(user_states, user_id, state)
     if state == 'waiting_for_direction_exhibitions':
         exhibitions = load_exhibitions(message.text)
         if exhibitions:
@@ -122,14 +108,36 @@ def handle_user_direction(message):
     elif state == 'waiting_for_direction_materials':
         materials = load_materials(message.text)
         if materials:
-            send_art_info(message, materials)
+
+            user_states[user_id + '_direction'] = message.text
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            markup.add("Видео", "Статьи", "Книги", "Места", "Назад")
+            bot.send_message(user_id, "Выберите, что вы хотите получить:", reply_markup=markup)
+            user_states[user_id] = 'waiting_for_material_type'
         else:
             response = f"Извините, никаких материалов по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
 
-    # Удаляем состояние после обработки
-    #user_states.pop(user_id, None)
+@bot.message_handler(func=lambda message: message.text in ["Видео", "Статьи", "Книги", "Места", "Назад"])
+def handle_material_type(message):
+    user_id = str(message.chat.id)  
+
+    if message.text == "Назад":
+        start(message) 
+        user_states.pop(user_id, None)
+        return
+
+    # Получаем направление, выбранное пользователем
+    direction = user_states.get(user_id + '_direction')
+    print(direction)
+    if direction:
+        materials = load_materials(direction)
+        if materials:
+            send_materials(message, materials, message.text)  # Отправляем материалы по выбранному типу
+        else:
+            bot.send_message(user_id, "Извините, материалов по выбранному направлению не найдено.")
+    
+    user_states.pop(user_id, None)
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
-
