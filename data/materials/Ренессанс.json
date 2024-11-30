@@ -1,0 +1,50 @@
+{
+"description": "В эпохе Возрождения можно выделить Проторенессанс (к. XIII-XIV вв.), Раннее Возрождение (XV в.), Высокое Возрождение (перв. четв. XVI в.) и Позднее Возрождение (сер. - втор. пол. XVI в.). Слово 'возрождение' является переводом французского 'renaissance', поэтому русские термины 'Возрождение' и 'Ренессанс' являются синонимичными.\nГлавной задачей искусства Возрождения было примирить античную форму с христианским содержанием, найдя для этого подходящие способы выражения. Одной из главных концепций, определивших искусство Возрождения, стал антропоцентризм, согласно которому человек является сосредоточием Вселенной. Эта же концепция позволила деятелям искусства Возрождения перестать быть анонимными. Большое влияние на искусство Возрождения оказали меценаты, благодаря которым стало развиваться не только религиозное, но и светское искусство, в том числе портретная живопись.",
+"books": [
+        {
+            "title": "Основы истории искусств",
+            "author": "Хорст Вольдемар Янсон",
+            "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+        },
+        {
+            "title": "Жизнеописания наиболее знаменитых живописцев, ваятелей и зодчих",
+            "author": "Джорджо Визари",
+            "url": "https://royallib.com/book/dgordgo_vazari/gizneopisaniya_naibolee_znamenitih_givopistsev_vayateley_i_zodchih.html"
+        },
+	{
+            "title": "История итальянского искусства в эпоху Возрождения",
+            "author": "Макс Дворжак",
+            "url": "https://drive.google.com/file/d/17TGg0WPS8qP4kuNEtVboS6aQfBAF3yxM/view\nhttps://drive.google.com/file/d/1JZgrHiRJ8ilQkpdB4PO1OklIGHHl3xzR/view"
+        },
+	{
+            "title": "Архитектура. Торжество гармонии. Ренессанс в Европе",
+            "author": "Кристи Андерсен",
+            "url": "https://www.ozon.ru/product/arhitektura-torzhestvo-garmonii-renessans-v-evrope-308610178/?__rr=1"
+        }
+    ],
+"videos": [
+	{
+            "title": "Лекция от Школы Дизайна ВШЭ",
+            "time": "2 ч 43 мин",
+            "url": "https://youtu.be/Zft5UOqoTf0?si=0vGn5yt8k_lSHxA9"
+	},
+	{
+            "title": "Лекция на канале СПбГУПТД",
+            "time": "20 мин",
+            "url": "https://youtu.be/DI324g6PGTs?si=7PX36fbwvJG34xZ6"
+	},
+	{
+            "title": "Лекции на на канале МГУ",
+            "time": "",
+            "url": "https://youtube.com/playlist?list=PLaQcphOc_UI868BAWTYD8pyqvn1WYI26T&si=RZJC8V8snBLOLFIw"
+	},
+	{
+            "title": "Освобожденный Ренессанс",
+            "time": "3 ч 58 мин",
+            "url": "https://youtube.com/playlist?list=PLDrNDWhUoSqPwZXp_gXSFiPALdMMKVJaU&si=rbzNTi2XeeZEpc9k"
+	}
+    ],
+"interesting_places": [
+	   
+    ]
+}

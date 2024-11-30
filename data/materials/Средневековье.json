@@ -1,0 +1,55 @@
+{
+"description": "В эпохе Средневековья можно выделить Раннее Средневековье (V-X вв.), в которое зародились и развились базовые христианские формы, и Высокое Средневековье (XI-XIII вв.), в которое расцвели романский и готический стили.\nИскусство продолжало служить религиозным целям и использовалось для оформления храмов и монастырей. Оно стремилось передать идеи, а не реалистичность, поэтому изображения часто были условными. В эпоху Средневековья деятели искусства часто оставались анонимными, так как личность считалась второстепенной по сравнению с духовным содержанием.",
+"books": [
+        {
+            "title": "Основы истории искусств",
+            "author": "Хорст Вольдемар Янсон",
+            "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+        },
+	{
+            "title": "Образ и культ: история образа до эпохи искусства",
+            "author": "Ханс Бельтинг",
+            "url": "https://yadi.sk/i/oxFXUOs5VfaBbA"
+        },
+	{
+            "title": "Искусство Византии IV–XV веков",
+            "author": "В. Д. Лихачева",
+            "url": "https://azbyka.ru/otechnik/ikona/iskusstvo-vizantii-4-15-vekov/"
+        },
+        {
+            "title": "Пути Византийского искусства",
+            "author": "О. С. Попова",
+            "url": "https://disk.yandex.ru/i/CPcE7yx-LLiPvQ"
+        },
+        {
+            "title": "Искусство Средневековья",
+            "author": "Н. Д. Кортунова",
+            "url": "https://www.ozon.ru/product/iskusstvo-srednevekovya-kortunova-natalya-d-1735714016/"
+        }
+    ],
+"videos": [
+	{
+            "title": "Лекция на канале СПбГУПТД",
+            "time": "20 мин",
+            "url": "https://youtu.be/KZtQlgGWcfg?si=OjKNvFxp70Yl9cr5"
+	},
+	{
+            "title": "Лекции на на канале МГУ",
+            "time": "",
+            "url": "https://youtube.com/playlist?list=PLaQcphOc_UI868BAWTYD8pyqvn1WYI26T&si=RZJC8V8snBLOLFIw"
+	},
+	{
+            "title": "Лекции Елены Царьковой",
+            "time": "",
+            "url": "https://youtube.com/playlist?list=PL4nY9OwdYKsXQIlxK_-WIqW78-YNZel0s&si=KahCHFxZ_ZkRCXKW"
+	},
+	{
+            "title": "Лекция Арсения Дежурова",
+            "time": "1 ч 12 мин",
+            "url": "https://youtu.be/-QCrYO7o2LA?si=lC2h2ui4WBtr5Nw3"
+	}
+    ],
+"interesting_places": [
+	
+    ]
+}
