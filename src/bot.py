@@ -30,11 +30,6 @@ def load_exhibitions(direction):
             return json.load(f)
     return None
 
-# def escape_markdown(text):
-#     escape_chars = ['\\', '`',  '_', '[', ']', '(', ')', '~', '>', '#', '+', '-', '=', '|', '.', '!']
-#     for char in escape_chars:
-#         text = text.replace(char, f'\{char}')
-#     return text
 
 def send_materials(message, data, material_type):
     content = ''
@@ -46,11 +41,6 @@ def send_materials(message, data, material_type):
         pcontent = "📚 Книги:\n"
         for book in data.get('books', []):
             content += f"• [{book['title']}]({book['url']})\nАвтор: {book['author']}\n\n"
-    elif material_type == "Места":
-        pcontent = "🏛️ Интересные места:\n"
-        if len(data.get('interesting_places', [])) != 0: 
-            for place in data.get('interesting_places', []):
-                content += f"• [{place['title']}]({place['url']})\nОписание: {place['description']}\nАдрес: {place['address']}\nВремя работы: {place['museum schedule']}\n\n"
     print(material_type)
     if content:
         content = pcontent + content
@@ -119,18 +109,26 @@ def handle_user_direction(message):
         if exhibitions:
             bot.send_message(user_id, f"Выставки по направлению {message.text.capitalize()}:")
             for exhibition in exhibitions['exhibitions']:
+                print(exhibition)
+                if('date' in exhibition):
+                    exhibition_details = (
+                        f" *{exhibition['title']}*.\n\n"
+                        f"🏛️ {exhibition['description']}\n\n"
+                        f"📍 Адресс: {exhibition['address']}.\n\n"
+                        f"📆 Дата: {exhibition['date']}.\n\n"
+                        f"🕐 Расписание музея: {exhibition['museum schedule']}.\n\n"
+                    )
+        
+                    exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']})\n\n"
+                else:
+                    exhibition_details = (
+                        f" *{exhibition['title']}*.\n\n"
+                        f"🏛️ {exhibition['description']}\n\n"
+                        f"📍 Адресс: {exhibition['address']}.\n\n"
+                        f"🕐 Расписание музея: {exhibition['museum schedule']}.\n\n"
+                    )
                 
-                exhibition_details = (
-                    f" *{exhibition['title']}*.\n\n"
-                    f"🏛️ {exhibition['description']}\n\n"
-                    f"📍 Адресс: {exhibition['address']}.\n\n"
-                    f"📆 Дата: {exhibition['date']}.\n\n"
-                    f"🕐 Расписание музея: {exhibition['museum schedule']}.\n\n"
-                    
-                )
-                escaped_exhibition_details = exhibition_details #escape_markdown(exhibition_details)
-                escaped_exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']})\n\n"
-                bot.send_message(user_id, escaped_exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
+                bot.send_message(user_id, exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
         else:
             response = f"Извините, никаких выставок по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
@@ -142,14 +140,14 @@ def handle_user_direction(message):
 
             user_states[user_id + '_direction'] = message.text
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            markup.add("Видео", "Книги", "Места", "Назад")
+            markup.add("Видео", "Книги", "Назад")
             bot.send_message(user_id, "Выберите, что вы хотите получить:", reply_markup=markup)
             user_states[user_id] = 'waiting_for_material_type'
         else:
             response = f"Извините, никаких материалов по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
 
-@bot.message_handler(func=lambda message: message.text in ["Видео", "Книги", "Места", "Назад"])
+@bot.message_handler(func=lambda message: message.text in ["Видео", "Книги", "Назад"])
 def handle_material_type(message):
     user_id = str(message.chat.id)  
 
