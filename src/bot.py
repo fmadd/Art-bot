@@ -42,10 +42,6 @@ def send_materials(message, data, material_type):
         pcontent = "🎥 Видео и лекции:\n"
         for video in data.get('videos', []):
             content += f"• [{video['title']}]({video['url']})\n\n"
-    elif material_type == "Статьи":
-        pcontent = "📰 Статьи:\n"
-        for article in data.get('articles', []):
-            content += f"• [{article['title']}]({article['url']})\nАвтор: {article['author']}\n\n"
     elif material_type == "Книги":
         pcontent = "📚 Книги:\n"
         for book in data.get('books', []):
@@ -58,7 +54,7 @@ def send_materials(message, data, material_type):
     print(material_type)
     if content:
         content = pcontent + content
-        bot.send_message(message.chat.id, content, parse_mode='Markdown')
+        bot.send_message(message.chat.id, content, parse_mode='Markdown', disable_web_page_preview=True)
     else:
         bot.send_message(message.chat.id, "Извините, ничего не найдено.")
 
@@ -134,7 +130,7 @@ def handle_user_direction(message):
                 )
                 escaped_exhibition_details = exhibition_details #escape_markdown(exhibition_details)
                 escaped_exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']})\n\n"
-                bot.send_message(user_id, escaped_exhibition_details, parse_mode='Markdown')
+                bot.send_message(user_id, escaped_exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
         else:
             response = f"Извините, никаких выставок по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
@@ -146,14 +142,14 @@ def handle_user_direction(message):
 
             user_states[user_id + '_direction'] = message.text
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            markup.add("Видео", "Статьи", "Книги", "Места", "Назад")
+            markup.add("Видео", "Книги", "Места", "Назад")
             bot.send_message(user_id, "Выберите, что вы хотите получить:", reply_markup=markup)
             user_states[user_id] = 'waiting_for_material_type'
         else:
             response = f"Извините, никаких материалов по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
 
-@bot.message_handler(func=lambda message: message.text in ["Видео", "Статьи", "Книги", "Места", "Назад"])
+@bot.message_handler(func=lambda message: message.text in ["Видео", "Книги", "Места", "Назад"])
 def handle_material_type(message):
     user_id = str(message.chat.id)  
 
