@@ -20,16 +20,6 @@
             "title": "Искусство Эгейского мира и Древней Греции",
             "author": "Ю. Д. Колпинский",
             "url": "https://disk.yandex.ru/i/p6r57bYsY6dbMg"
-        },
-	{
-            "title": "Искусство этрусков и Древнего Рима",
-            "author": "Ю. Д. Колпинский",
-            "url": "https://disk.yandex.ru/d/yEKoltSSfo-AgQ"
-        },
-	{
-            "title": "Римский скульптурный портрет",
-            "author": "Н. Н. Бритова, Н. М. Лосева, Н. А. Сидорова",
-            "url": "https://ancientrome.ru/publik/art/rsp/"
         }
     ],
 "videos": [
@@ -39,19 +29,14 @@
             "url": "https://youtu.be/C2jYMlcx1zc?si=NJAVC9n1ELP_XJ3u"
 	},
 	{
-            "title": "Лекции Надежды Юрасовой",
-            "time": "1 ч 22 мин",
-            "url": "https://youtube.com/playlist?list=PLDrNDWhUoSqM-UvSxl0im1_PY7NCzznis&si=NazrtHOVLro-xJuY"
-	},
-	{
-            "title": "Лекция на канале СПбГУПТД о культуре Древней Греции",
+            "title": "Лекция на канале СПбГУПТД",
             "time": "22 мин",
             "url": "https://youtu.be/Fex1p0GGLwQ?si=PZ5CmgD5QttTtESR"
 	},
 	{
-            "title": "Лекция на канале СПбГУПТД о культуре Древнего Рима",
-            "time": "21 мин",
-            "url": "https://youtu.be/lzfWEG-pDdc?si=txvJtOcWJE-Vl3sS"
+            "title": "Лекция Надежды Юрасовой",
+            "time": "2 ч 2 мин",
+            "url": "https://www.youtube.com/playlist?list=PLDrNDWhUoSqM-UvSxl0im1_PY7NCzznis"
 	},
 	{
             "title": "Лекция Алексея Шадрина об искусстве Древней Греции",
@@ -60,7 +45,7 @@
 	},
 	{
             "title": "Лекции Арсения Дежурова об искусстве Древней Греции",
-            "time": "",
+            "time": "плейлист на YouTube",
             "url": "https://youtube.com/playlist?list=PLZxOiJlB-53Jl27JFzUNl3tvLp4alolsm&si=66o2Uz7wEZS6keA_"
 	}
     ]

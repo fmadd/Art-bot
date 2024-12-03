@@ -35,13 +35,18 @@
 	},
 	{
             "title": "Лекции на на канале МГУ",
-            "time": "",
+            "time": "плейлист на YouTube",
             "url": "https://youtube.com/playlist?list=PLaQcphOc_UI868BAWTYD8pyqvn1WYI26T&si=RZJC8V8snBLOLFIw"
 	},
 	{
             "title": "Лекции Елены Царьковой",
-            "time": "",
+            "time": "плейлист на YouTube",
             "url": "https://youtube.com/playlist?list=PL4nY9OwdYKsXQIlxK_-WIqW78-YNZel0s&si=KahCHFxZ_ZkRCXKW"
+	},
+	{
+            "title": "Лекция Надежды Юрасовой",
+            "time": "2 ч 37 мин",
+            "url": "https://www.youtube.com/playlist?list=PLDrNDWhUoSqNERg38wv68Hg39Q3G2r3Rn"
 	},
 	{
             "title": "Лекция Арсения Дежурова",
