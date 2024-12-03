@@ -32,6 +32,7 @@ def load_exhibitions(direction):
 
 
 def send_materials(message, data, material_type):
+    print(material_type)
     content = ''
     if material_type == "Видео":
         pcontent = "🎥 Видео и лекции:\n\n"
@@ -43,6 +44,12 @@ def send_materials(message, data, material_type):
             content += f"• [{book['title']}]({book['url']}).\n"
             if(book['author']): content += f"Автор: {book['author']}.\n"
             content += "\n"
+    elif material_type == "Краткое описание":
+       
+        pcontent = "📄 Описание:\n\n"
+        dat = data.get('description', [])
+        print(dat)
+        content = f"{dat}\n\n"
     if content:
         content = pcontent + content
         bot.send_message(message.chat.id, content, parse_mode='Markdown', disable_web_page_preview=True)
@@ -53,20 +60,19 @@ bot = telebot.TeleBot(API_TOKEN)
 
 art_directions = load_art_directions()
 art_exhibitions = load_art_exhibitions()
-print(art_exhibitions)
 user_states = {}
 
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    exhibitions_button = types.KeyboardButton("Выставки")
+    exhibitions_button = types.KeyboardButton("Места для посещения")
     materials_button = types.KeyboardButton("Материалы")
     markup.add(exhibitions_button, materials_button)
     bot.send_message(message.chat.id, "Привет! Я искусствоведческий бот. Пожалуйста, выберите, что вас интересует:", reply_markup=markup)
 
-@bot.message_handler(func=lambda message: message.text in ["Выставки", "Материалы"])
+@bot.message_handler(func=lambda message: message.text in ["Места для посещения", "Материалы"])
 def main_menu(message):
-    if message.text == "Выставки":
+    if message.text == "Места для посещения":
         user_states[str(message.chat.id)] = 'waiting_for_direction_exhibitions'
         show_directions(message.chat.id, "выставок")
     elif message.text == "Материалы":
@@ -93,7 +99,7 @@ def show_directions(chat_id, action):
     back_button = types.KeyboardButton("Назад")
     markup.add(back_button)
     
-    bot.send_message(chat_id, f"Введите направление искусства для получения {action}:\n\n{directions_list}", reply_markup=markup)
+    bot.send_message(chat_id, f"Выберите интересующее Вас направление/период в искусстве :\n\n{directions_list}", reply_markup=markup)
 
 @bot.message_handler(func=lambda message: message.text in art_directions.keys() or message.text in art_exhibitions.keys()or message.text == "Назад")
 def handle_user_direction(message):
@@ -105,36 +111,51 @@ def handle_user_direction(message):
         return
     
     state = user_states[user_id]
-    print(user_states, user_id, state)
     if state == 'waiting_for_direction_exhibitions':
         exhibitions = load_exhibitions(message.text)
         if exhibitions:
-            bot.send_message(user_id, f"Выставки по направлению {message.text}:")
+            bot.send_message(user_id, f"Места для посещения по направлению {message.text}:")
             for exhibition in exhibitions['exhibitions']:
-                if('date' in exhibition):
-                    exhibition_details = (
-                        f" *{exhibition['title']}*\n\n"
-                        f"🏛️ {exhibition['description']}\n\n")
-                    if(exhibition['full_description']): exhibition_details += f"📎 [Подробнее]({exhibition['full_description']}).\n\n"
-                    exhibition_details += ( 
-                        f"📍 Адрес: {exhibition['address']}.\n\n"
-                        f"📆 Дата: {exhibition['date']}.\n\n"
-                        f"🕐 Расписание: {exhibition['museum schedule']}.\n\n"
-                    )
-                else:
-                    exhibition_details = (
-                        f" *{exhibition['title']}*\n\n"
-                        f"🏛️ {exhibition['description']}\n\n")
-                    if(exhibition['full_description']): exhibition_details += f"📎 [Подробнее]({exhibition['full_description']}).\n\n"
-                    exhibition_details += ( 
-                        f"📍 Адрес: {exhibition['address']}.\n\n"
-                        f"🕐 Расписание: {exhibition['museum schedule']}.\n\n"
-                    )
-                if(exhibition['url']): exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']}).\n\n"
+                exhibition_details = (
+                    f"*{exhibition['title']}*\n\n"
+                    f"🏛️ {exhibition['description']}\n\n"
+                )
 
-                bot.send_message(user_id, exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
+                if exhibition['full_description']:
+                    exhibition_details += f"📎 [Подробнее]({exhibition['full_description']}).\n\n"
+
+                exhibition_details += (
+                    f"📍 Адрес: {exhibition['address']}.\n\n"
+                )
+
+                if 'date' in exhibition:
+                    exhibition_details += (
+                    f"📆 Дата: {exhibition['date']}.\n\n"
+                    )
+
+                exhibition_details += (
+                    f"🕐 Расписание: {exhibition['museum schedule']}.\n\n"
+                )
+
+                if exhibition['url']:
+                    exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']}).\n\n"
+
+                # Если есть изображения, отправляем их вместе с описанием
+                if 'img' in exhibition and exhibition['img']:
+                    print(exhibition['img'])
+                    image_path = exhibition['img']
+                    with open(image_path, 'rb') as photo:
+                        print(image_path)
+                        bot.send_photo(
+                            user_id, 
+                            photo, 
+                            caption=exhibition_details, 
+                            parse_mode='Markdown'  # Это может не сработать в caption
+                        )
+                else:
+                    bot.send_message(user_id, exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
         else:
-            response = f"Извините, никаких выставок по направлению {message.text.capitalize()} не найдено."
+            response = f"Извините, никаких мест по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
 
 
@@ -144,17 +165,17 @@ def handle_user_direction(message):
 
             user_states[user_id + '_direction'] = message.text
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            markup.add("Видео", "Книги", "Назад")
+            markup.add("Видео", "Книги", "Краткое описание", "Назад")
             bot.send_message(user_id, "Выберите, что вы хотите получить:", reply_markup=markup)
             user_states[user_id] = 'waiting_for_material_type'
         else:
             response = f"Извините, никаких материалов по направлению {message.text.capitalize()} не найдено."
             bot.send_message(user_id, response)
 
-@bot.message_handler(func=lambda message: message.text in ["Видео", "Книги", "Назад"])
+@bot.message_handler(func=lambda message: message.text in ["Видео", "Книги", "Краткое описание", "Назад"])
 def handle_material_type(message):
     user_id = str(message.chat.id)  
-
+    print(message)
     if message.text == "Назад":
         start(message) 
         user_states.pop(user_id, None)

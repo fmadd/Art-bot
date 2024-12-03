@@ -24,7 +24,8 @@
             "full_description": "",
             "address": "Москва, ул. Старые Кузьминки, 4 и 9",
             "museum schedule": "вт-ср (10:00–17:30); чт (13:00–21:00); пт-вс (10:00–17:30)",
-            "url": "http://www.kuzminki-msk.ru/index.html"
+            "url": "",
+            "img" : "./data/1.jpg"
         },
         {
             "title": "Египетский зал в особняке П. П. Смирнова",
@@ -32,7 +33,8 @@
             "full_description": "",
             "address": "Москва, Тверской бульвар, 18",
             "museum schedule": "пн-пт (10:00–18:00)",
-            "url": "https://domsmirnova.com/"
+            "url": "",
+            "img" : "./data/15.jpg"
         },
 	    {
             "title": "Египетский дом",
@@ -40,7 +42,8 @@
             "full_description": "",
             "address": "Москва, ул. Большая Дмитровка, 9",
             "museum schedule": "можно увидеть в любое время",
-            "url": ""
+            "url": "",
+            "img" : "./data/12.jpg"
         }
     ] 
 }
