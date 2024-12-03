@@ -93,7 +93,7 @@ def show_directions(chat_id, action):
     back_button = types.KeyboardButton("Назад")
     markup.add(back_button)
     
-    bot.send_message(chat_id, f"Введите направление искусства для получения {action}:\n{directions_list}", reply_markup=markup)
+    bot.send_message(chat_id, f"Введите направление искусства для получения {action}:\n\n{directions_list}", reply_markup=markup)
 
 @bot.message_handler(func=lambda message: message.text in art_directions.keys() or message.text in art_exhibitions.keys()or message.text == "Назад")
 def handle_user_direction(message):
@@ -172,4 +172,8 @@ def handle_material_type(message):
     user_states.pop(user_id, None)
 
 if __name__ == '__main__':
-    bot.polling(none_stop=True)
+    while(True):
+        try:
+            bot.polling(none_stop=True)
+        except:
+            continue
