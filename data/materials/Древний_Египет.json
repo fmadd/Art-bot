@@ -1,0 +1,47 @@
+{
+    "description": "Наиболее значимыми для искусства Древнего Египта являются периоды Древнего (28 – 23 вв. до н.э.), Среднего (21 – 18 вв. до н.э.) и Нового (16 – 11 вв. до н.э.) царств. Изначальное назначение египетского искусства было религиозно-культовым, но в более поздние периоды египетское искусство стало более политизированным и служило также для прославления фараона как бога и победителя врагов Египта.\nК особенностям искусства Древнего Египта можно отнести тенденцию к единообразию и следование принятым в древности канонам, взаимосвязь текста и изображения, подчеркнутую геометричность форм, грандиозность и монументальность архитектуры, связь с каменным блоком и стеной в скульптуре.",
+    "books": [
+            {
+                "title": "Основы истории искусств",
+                "author": "Хорст Вольдемар Янсон",
+                "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+            },
+            {
+                "title": "История Искусства Древности",
+                "author": "Иоганн Иоахим Винкельман",
+                "url": "https://disk.yandex.ru/d/XeU9QAE4Q4c7Qg"
+            },
+        {
+                "title": "Искусство Древнего Египта",
+                "author": "Милица Матье",
+                "url": "https://disk.yandex.ru/d/UUpB44mp95YwEw"
+            },
+        {
+                "title": "Египетские мифы. От пирамид и фараонов до Анубиса и «Книги мертвых»",
+                "author": "Гэрри Дж. Шоу",
+                "url": "https://www.mann-ivanov-ferber.ru/catalog/product/egipetskie-mify/?srsltid=AfmBOooC_3AqjYvh4AgMXu1x7UxJgqgNS5MTnP3WJg0sV14m7d5KAMAU"
+            }
+        ],
+    "videos": [
+        {
+                "title": "Фильмы из серии «Сокровища Древнего Египта / Treasures Of Ancient Egypt»",
+                "time": "2 ч 33 мин",
+                "url": "https://dok-film.net/9963-sokrovischa-drevnego-egipta-treasures-of-ancient-egypt-2014.html"
+        },
+        {
+                "title": "Лекция на канале СПбГУПТД",
+                "time": "22 мин",
+                "url": "https://youtu.be/XSg0VS_r1fY?si=yWqZSdSBNVGzwKpO"
+        },
+        {
+                "title": "Лекции Виктора Солкина",
+                "time": "плейлист на YouTube",
+                "url": "https://www.youtube.com/playlist?list=PL-b_iW_CKM0IEqg776TwN89RaO1mY8VTw"
+        },
+        {
+                "title": "Лекции Арсения Дежурова",
+                "time": "плейлист на YouTube",
+                "url": "https://www.youtube.com/playlist?list=PLZxOiJlB-53LdCsgtkgLPa-7vlCdBlsGV"
+        }
+        ]
+    }

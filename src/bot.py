@@ -34,14 +34,15 @@ def load_exhibitions(direction):
 def send_materials(message, data, material_type):
     content = ''
     if material_type == "Видео":
-        pcontent = "🎥 Видео и лекции:\n"
+        pcontent = "🎥 Видео и лекции:\n\n"
         for video in data.get('videos', []):
-            content += f"• [{video['title']}]({video['url']})\n\n"
+            content += f"• [{video['title']}]({video['url']}).\n\n"
     elif material_type == "Книги":
-        pcontent = "📚 Книги:\n"
+        pcontent = "📚 Книги:\n\n"
         for book in data.get('books', []):
-            content += f"• [{book['title']}]({book['url']})\nАвтор: {book['author']}\n\n"
-    print(material_type)
+            content += f"• [{book['title']}]({book['url']}).\n"
+            if(book['author']): content += f"Автор: {book['author']}.\n"
+            content += "\n"
     if content:
         content = pcontent + content
         bot.send_message(message.chat.id, content, parse_mode='Markdown', disable_web_page_preview=True)
@@ -52,6 +53,7 @@ bot = telebot.TeleBot(API_TOKEN)
 
 art_directions = load_art_directions()
 art_exhibitions = load_art_exhibitions()
+print(art_exhibitions)
 user_states = {}
 
 @bot.message_handler(commands=['start'])
@@ -76,16 +78,16 @@ def show_directions(chat_id, action):
 
     if state == 'waiting_for_direction_exhibitions':
         directions_list = "• "
-        directions_list += "\n• ".join(art_directions.keys())
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        for direction in art_directions.keys():
-            markup.add(direction.capitalize())
-    elif state == 'waiting_for_direction_materials':
-        directions_list = "• "
         directions_list += "\n• ".join(art_exhibitions.keys())
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         for direction in art_exhibitions.keys():
-            markup.add(direction.capitalize())
+            markup.add(direction)
+    elif state == 'waiting_for_direction_materials':
+        directions_list = "• "
+        directions_list += "\n• ".join(art_directions.keys())
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        for direction in art_directions.keys():
+            markup.add(direction)
 
     
     back_button = types.KeyboardButton("Назад")
@@ -93,7 +95,7 @@ def show_directions(chat_id, action):
     
     bot.send_message(chat_id, f"Введите направление искусства для получения {action}:\n{directions_list}", reply_markup=markup)
 
-@bot.message_handler(func=lambda message: message.text in art_directions.keys() or message.text == "Назад")
+@bot.message_handler(func=lambda message: message.text in art_directions.keys() or message.text in art_exhibitions.keys()or message.text == "Назад")
 def handle_user_direction(message):
     user_id = str(message.chat.id) 
 
@@ -107,27 +109,29 @@ def handle_user_direction(message):
     if state == 'waiting_for_direction_exhibitions':
         exhibitions = load_exhibitions(message.text)
         if exhibitions:
-            bot.send_message(user_id, f"Выставки по направлению {message.text.capitalize()}:")
+            bot.send_message(user_id, f"Выставки по направлению {message.text}:")
             for exhibition in exhibitions['exhibitions']:
-                print(exhibition)
                 if('date' in exhibition):
                     exhibition_details = (
-                        f" *{exhibition['title']}*.\n\n"
-                        f"🏛️ {exhibition['description']}\n\n"
-                        f"📍 Адресс: {exhibition['address']}.\n\n"
+                        f" *{exhibition['title']}*\n\n"
+                        f"🏛️ {exhibition['description']}\n\n")
+                    if(exhibition['full_description']): exhibition_details += f"📎 [Подробнее]({exhibition['full_description']}).\n\n"
+                    exhibition_details += ( 
+                        f"📍 Адрес: {exhibition['address']}.\n\n"
                         f"📆 Дата: {exhibition['date']}.\n\n"
-                        f"🕐 Расписание музея: {exhibition['museum schedule']}.\n\n"
+                        f"🕐 Расписание: {exhibition['museum schedule']}.\n\n"
                     )
-        
-                    exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']})\n\n"
                 else:
                     exhibition_details = (
-                        f" *{exhibition['title']}*.\n\n"
-                        f"🏛️ {exhibition['description']}\n\n"
-                        f"📍 Адресс: {exhibition['address']}.\n\n"
-                        f"🕐 Расписание музея: {exhibition['museum schedule']}.\n\n"
+                        f" *{exhibition['title']}*\n\n"
+                        f"🏛️ {exhibition['description']}\n\n")
+                    if(exhibition['full_description']): exhibition_details += f"📎 [Подробнее]({exhibition['full_description']}).\n\n"
+                    exhibition_details += ( 
+                        f"📍 Адрес: {exhibition['address']}.\n\n"
+                        f"🕐 Расписание: {exhibition['museum schedule']}.\n\n"
                     )
-                
+                if(exhibition['url']): exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']}).\n\n"
+
                 bot.send_message(user_id, exhibition_details, parse_mode='Markdown', disable_web_page_preview=True)
         else:
             response = f"Извините, никаких выставок по направлению {message.text.capitalize()} не найдено."
@@ -158,7 +162,6 @@ def handle_material_type(message):
 
     # Получаем направление, выбранное пользователем
     direction = user_states.get(user_id + '_direction')
-    print(direction)
     if direction:
         materials = load_materials(direction)
         if materials:

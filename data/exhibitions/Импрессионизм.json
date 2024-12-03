@@ -1,0 +1,31 @@
+{
+    "exhibitions": [
+        {
+            "title": "Музей русского импрессионизма",
+            "description": "Постоянная экспозиция музея посвящена развитию русского импрессионизма на протяжении столетия, начиная с 1870-х годов. В собрание музея входят полотна Константина Коровина, Валентина Серова, Константина Юона, Станислава Жуковского и других мастеров.",
+            "full_description": "https://docs.google.com/document/d/1d2z4u943plcJ9hS3ukGNmaLnnQJ0U6wnsJHEMBEFLng/edit?tab=t.0",
+            "address": "Москва, Ленинградский пр-т, 10, стр. 11",
+            "date": "постоянная экспозиция",
+            "museum schedule": "пн–вт, пт–вс (11:00–20:00); ср–чт (12:00–21:00)",
+            "url": "https://radario.ru/widgets/time-table/?groupId=28687&accentColor=%23AD1066&standAlone=true&mobileUse=true&roundtripData=%7B%7D&_frameCount=1#newWidget"
+        },
+        {
+            "title": "Выставка «Клод Моне. Магия воды и света» в галерее VEKARTA",
+            "description": "Выставка знакомит посетителей с творчеством французского живописца Клода Моне, которого считают одним из основателей импрессионизма. Художественная экспозиция включает в себя репродукции картин, написанных в технике жикле.",
+            "full_description": "https://docs.google.com/document/d/1StNKhbY-PyN7yMWENqF4ghVAEbpO36Lpms7YzWMSiDo/edit?tab=t.0",
+            "address": "Москва, ул. Старая Басманная, 15А, стр. 4",
+            "date": "1 января - 8 декабря 2024 года",
+            "museum schedule": "пн–пт (12:00–21:00); сб–вс (11:00–20:00)",
+            "url": "https://russpass.ru/event/63e25e0488c02c9c01ed4885?utm_source=yandex&utm_medium=cpc&utm_campaign=russpass_mi_63e25e0488c02c9c01ed4885_klod-mone_msko_web_mc_y_gnrl_nbrnd_dm_UIDm28rk8&utm_content=%7Ccid%7C111983412%7Cgid%7C5458712101%7Caid%7C16237492850%7Cpid%7C52180169747%7Ccrt%7C0%7Cint%7C%7Ctgt%7C52180169747%7Csrct%7Csearch%7Csrc%7Cnone%7Cregion_id%7C10750%7Cregion_name%7C%D0%A0%D0%B0%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%BE%D0%B5%7Cdvc%7Cdesktop%7Cpos%7Cpremium1%7Cmatchtype%7C%7Crid%7C52180169747%7Ccoef%7C0%7Cdop%7C0&utm_term=---autotargeting&yclid=6595436959466520575&date=2024-12-31"
+        },
+        {
+            "title": "Адепты красного. Малявин & Архипов",
+            "description": "Данный выставочный проект объединяет произведения Филиппа Малявина и Абрама Архипова — выдающихся художников конца XIX — начала ХХ века, ярких представителей русского импрессионизма.",
+            "full_description": "https://docs.google.com/document/d/1f9Yj_6w6fnIc5Ofw82f2RWXFxrELxYkKHV283ZKNQYc/edit?tab=t.0",
+            "address": "Москва, Лаврушинский пер., 12",
+            "date": "20 сентября 2024 года - 16 февраля 2025 года",
+            "museum schedule": "вс, вт–ср (10:00–18:00, кассы и вход до 17:00); чт–сб (10:00–21:00, кассы и вход до 20:00)",
+            "url": "https://www.tretyakovgallery.ru/tickets/#/buy/event/30176"
+        }
+    ]
+}
