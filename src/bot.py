@@ -138,6 +138,7 @@ def handle_user_direction(message):
                 )
 
                 if exhibition['url']:
+                    print(exhibition['url'])
                     exhibition_details += f"🎟️ [Купить билеты]({exhibition['url']}).\n\n"
 
                 # Если есть изображения, отправляем их вместе с описанием

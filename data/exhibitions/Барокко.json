@@ -7,8 +7,7 @@
             "address": "Москва, ул. Волхонка, 12",
             "date": "постоянная экспозиция",
             "museum schedule": "вт-ср (11:00–20:00, вход до 19:00); чт-пт (11:00–21:00, вход до 20:00); сб-вс (10:00–20:00, вход до 19:00)",
-            "url": "https://tickets.pushkinmuseum.art/event/2E36E4DF9C44A202EAB0D5CD452D49624D4BFB11/2024-12-04",
-            "img" : "./data/23.jpg"
+            "url": "https://tickets.pushkinmuseum.art/event/2E36E4DF9C44A202EAB0D5CD452D49624D4BFB11/2024-12-04"
         },
         {
             "title": "Дом Апраксиных–Трубецких",
@@ -25,7 +24,9 @@
             "full_description": "",
             "address": "Москва, Новодевичий проезд, 1",
             "museum schedule": "пн, ср–вс (9:00–17:00); санитарный день — первый понедельник месяца",
-            "url": ""
+            "url": "",
+            "img" : "./data/23.jpg"
+
         }
     ]
 }
