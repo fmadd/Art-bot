@@ -1,0 +1,32 @@
+{
+"description": "Эпоха барокко охватывает период с конца XVI до середины XVIII века. В это время начали формироваться национальные художественные школы в Италии, Франции, Испании, Голландии, Фландрии, Англии и Германии.\nГлавной целью искусства барокко было впечатлить и вызвать эмоциональный отклик. Этого оно добавилось с помощью динамичности и пышности, контрастов света и тени, а также сложной композиции.",
+"books": [
+        {
+            "title": "Основы истории искусств",
+            "author": "Хорст Вольдемар Янсон",
+            "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+        },
+        {
+            "title": "Барокко. Архитектура. Скульптура. Живопись",
+            "author": "Рольф Томан",
+            "url": "https://vk.com/doc525831385_680777835?hash=BUNnD60Ki8xjqQrj6SgRr8I9NDNV0Jx9ZD2ERrgIYCo&dl=2z5jbVjW0eDaRYknGttbj22UhnfewLchgdJ9vczTJeH"
+        }
+    ],
+"videos": [
+	{
+            "title": "Лекции на канале Art Society",
+            "time": "плейлист на YouTube",
+            "url": "https://youtube.com/playlist?list=PLNjCzziRyu0fl7Uc3g0g69zj5xptKx48w&si=xvpL74QYkQGI6qk2"
+	},
+	{
+            "title": "Лекции Надежды Юрасовой",
+            "time": "1 ч 23 мин",
+            "url": "https://youtu.be/t5R2JDvzvZg?si=7TY4yWa_fl8d2vMs"
+	},
+	{
+            "title": "Лекции Арсения Дежурова",
+            "time": "1 ч 58 мин",
+            "url": "https://youtu.be/38a5bG1taxo?si=I672PEL44Dei-lpB"
+	}
+    ]
+}

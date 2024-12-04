@@ -1,0 +1,37 @@
+{
+"description": "Эпоха классицизма охватывает период с XVII по XIX век. В это время продолжили формироваться национальные художественные школы в Италии, Франции, Испании, Голландии, Фландрии, Англии и Германии.\nГлавной целью искусства классицизма было воспитывать и вдохновлять на моральное совершенствование, утверждать идеалы порядка и гармонии. Этого оно добавилось с помощью строгой композиции и сдержанной палитры, опираясь на античные образцы и используя аллегории.",
+"books": [
+        {
+            "title": "Основы истории искусств",
+            "author": "Хорст Вольдемар Янсон",
+            "url": "https://disk.yandex.ru/i/7EBLF18mSrc1xQ"
+        },
+       {
+            "title": "Европейский классицизм",
+            "author": "Сергей Даниэль",
+            "url": "https://vk.com/doc32277925_442586691?hash=DHKghTI8eE2zZedWAHCyjFaZAYP8axTGqFe4SOW8MA0&dl=xZuFdsf2vyv8Szi2WtUZzdj5JZNZWPDHhgbmqJGniUg"
+        }
+    ],
+"videos": [
+	{
+            "title": "Лекция на канале НИТУ МИСиС",
+            "time": "1 ч 39 мин",
+            "url": "https://youtu.be/JEZNdUsdsxI?si=wh8JAzFKJz32xeyF"
+	},
+	{
+            "title": "Лекция на канале Art Society",
+            "time": "41 мин",
+            "url": "https://youtu.be/rBc20YvJbOY?si=4dhdUkteFQHPEksc"
+	},
+	{
+            "title": "Лекция Надежды Юрасовой",
+            "time": "1 ч 20 мин",
+            "url": "https://youtu.be/HA30v6Jni-M?si=wVgF2y5QPpuiL7e5"
+	},
+	{
+            "title": "Лекции Арсения Дежурова",
+            "time": "1 ч 58 мин",
+            "url": "https://youtu.be/38a5bG1taxo?si=I672PEL44Dei-lpB"
+	}
+    ]
+}
